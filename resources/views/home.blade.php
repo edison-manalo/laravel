@@ -1,4 +1,4 @@
 <x-layout>
     <x-slot:heading>Home</x-slot:heading>
-    Hello visitor
+    <p class="text-white">Hello visitor</p>
 </x-layout>
