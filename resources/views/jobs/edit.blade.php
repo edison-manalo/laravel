@@ -15,7 +15,7 @@
                             type="text"
                             name="title"
                             class="bg-white/5 block w-full min-w-0 grow bg-transparent py-2 px-3 text-white outline -outline-offset-2 outline-white/10 focus:outline-2 focus:outline-blue-700 focus:-outline-offset-3 rounded-xl"
-                            value="{{ old('title', $job->title) }}" />
+                            :value="old('title', $job->title)" />
                     </div>
 
                     @error('title')
@@ -31,7 +31,7 @@
                             type="text"
                             name="salary"
                             class="bg-white/5 block w-full min-w-0 grow bg-transparent py-2 px-3 text-white outline -outline-offset-2 outline-white/10 focus:outline-2 focus:outline-blue-700 focus:-outline-offset-3 rounded-xl"
-                            value="{{ old('salary', $job->salary) }}" />
+                            :value="old('salary', $job->salary)" />
                     </div>
 
                     @error('salary')

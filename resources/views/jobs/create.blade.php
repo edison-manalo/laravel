@@ -8,14 +8,14 @@
             <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <x-form-field>
                     <x-form-label for="title">Title</x-form-label>
-                    <x-form-input type="text" id="title" name="title" value="{{ old('title') }}" required></x-form-input>
+                    <x-form-input type="text" id="title" name="title" :value="old('title')" required></x-form-input>
 
                     <x-form-error name="title"></x-form-error>
                 </x-form-field>
 
                 <x-form-field class="row-start-2">
                     <x-form-label for="salary">Salary</x-form-label>
-                    <x-form-input type="text" id="salary" name="salary" value="{{ old('salary') }}" required></x-form-input>
+                    <x-form-input type="text" id="salary" name="salary" :value="old('salary')" required></x-form-input>
 
                     <x-form-error name="salary"></x-form-error>
                 </x-form-field>

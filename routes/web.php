@@ -19,13 +19,13 @@ Route::controller(JobController::class)->group(function () {
 });
 */
 
-/*
+/**
  * Often you don't need to generate or register all seven resourceful routes,
  * so you can pass an array as third item
  * 
  * ['only' => ['index', 'show', 'create', 'store']]
  * ['except' => ['edit']]
-*/
+ */
 Route::resource('jobs', JobController::class);
 
 Route::view('/contact', 'contact');
@@ -36,3 +36,5 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
+
+Route::post('/logout', [SessionController::class, 'destroy']);
