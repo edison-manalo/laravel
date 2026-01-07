@@ -7,37 +7,19 @@
 
         <div class="border-b border-white/10 pb-12">
             <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div class="sm:col-span-4">
-                    <label for="title" class="block font-medium text-white">Title</label>
-                    <div class="mt-2">
-                        <input
-                            id="title"
-                            type="text"
-                            name="title"
-                            class="bg-white/5 block w-full min-w-0 grow bg-transparent py-2 px-3 text-white outline -outline-offset-2 outline-white/10 focus:outline-2 focus:outline-blue-700 focus:-outline-offset-3 rounded-xl"
-                            :value="old('title', $job->title)" />
-                    </div>
+                <x-form-field>
+                    <x-form-label for="title">Title</x-form-label>
+                    <x-form-input type="text" id="title" name="title" value="{{ old('title', $job->title) }}"></x-form-input>
 
-                    @error('title')
-                        <p class="mt-2 text-red-400 font-medium">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <x-form-error name="title"></x-form-error>
+                </x-form-field>
 
-                <div class="sm:col-span-2 row-start-2">
-                    <label for="salary" class="block font-medium text-white">Salary</label>
-                    <div class="mt-2">
-                        <input
-                            id="salary"
-                            type="text"
-                            name="salary"
-                            class="bg-white/5 block w-full min-w-0 grow bg-transparent py-2 px-3 text-white outline -outline-offset-2 outline-white/10 focus:outline-2 focus:outline-blue-700 focus:-outline-offset-3 rounded-xl"
-                            :value="old('salary', $job->salary)" />
-                    </div>
+                <x-form-field class="row-start-2">
+                    <x-form-label for="salary"></x-form-label>
+                    <x-form-input type="text" id="salary" name="salary" value="{{ old('salary', $job->salary) }}"></x-form-input>
 
-                    @error('salary')
-                        <p class="mt-2 text-red-400 font-medium">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <x-form-error name="salary"></x-form-error>
+                </x-form-field>
             </div>
 
             {{-- @if ($errors->any())
