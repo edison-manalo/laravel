@@ -21,7 +21,7 @@ Route::controller(JobController::class)->group(function () {
 
 /**
  * Often you don't need to generate or register all seven resourceful routes,
- * so you can pass an array as third item
+ * so you can pass an array as third item:
  * 
  * ['only' => ['index', 'show', 'create', 'store']]
  * ['except' => ['edit']]

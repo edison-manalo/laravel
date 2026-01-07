@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -47,13 +49,24 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
+        // See if the user is the same as the user who is currently signed in
+        Gate::define('edit-job', function (User $user, Job $job) {
+            return $job->employer->user->is($user);
+        });
+
         if (Auth::guest()) {
             return redirect('/login');
         }
 
-        if ($job->employer->user->isNot(Auth::user())) {
-            abort(403);
-        }
+        /** 
+         * Runs the logic (Gate::define(...)) associated with the name referenced "edit-job",
+         * if it fails or return false, laravel automatically aborts with a 403.
+         * 
+         * But we can run either of these two to manually handle the response:
+         * if (Gate::allows(...)) {...}
+         * if (Gate::denies(...)) {...}
+         */
+        Gate::authorize('edit-job', $job);
 
         return view('jobs.edit', [
             'job' => $job
