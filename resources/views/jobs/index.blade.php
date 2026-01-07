@@ -1,6 +1,10 @@
 <x-layout>
     <x-slot:heading>Job Listings</x-slot:heading>
-    
+
+    <x-slot name="actions">
+        <x-button href="/jobs/create">Create Job</x-button>
+    </x-slot>
+
     <div class="divide-y divide-white/10">
         @foreach ($jobs as $job)
             <a href="/jobs/{{ $job['id'] }}" class="block text-white py-6 group">

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:heading>Edit Job: {{ $job->title }}</x-slot:heading>
+    <x-slot:heading>{{ $job->title }}</x-slot:heading>
 
     <form method="POST" action="/jobs/{{ $job->id }}">
         @csrf
@@ -15,7 +15,7 @@
                 </x-form-field>
 
                 <x-form-field class="row-start-2">
-                    <x-form-label for="salary"></x-form-label>
+                    <x-form-label for="salary">Salary</x-form-label>
                     <x-form-input type="text" id="salary" name="salary" value="{{ old('salary', $job->salary) }}"></x-form-input>
 
                     <x-form-error name="salary"></x-form-error>
