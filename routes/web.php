@@ -9,7 +9,7 @@ Route::view('/', 'home');
 Route::view('/contact', 'contact');
 
 Route::get('/jobs', [JobController::class, 'index']);
-Route::get('/jobs/create', [JobController::class, 'index']);
+Route::get('/jobs/create', [JobController::class, 'create']);
 Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 Route::get('/jobs/{job}', [JobController::class, 'show']);
 
