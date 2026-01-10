@@ -6,30 +6,33 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
+Route::view('/contact', 'contact');
 
-/*
-Route::controller(JobController::class)->group(function () {
-    Route::get('/jobs', 'index');
-    Route::get('/jobs/create', 'create');
-    Route::get('/jobs/{job}', 'show');
-    Route::post('/jobs', 'store');
-    Route::get('/jobs/{job}/edit', 'edit');
-    Route::patch('/jobs/{job}', 'update');
-    Route::delete('/jobs/{job}', 'destroy');
-});
-*/
+Route::get('/jobs', [JobController::class, 'index']);
+Route::get('/jobs/create', [JobController::class, 'index']);
+Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
+Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 /**
- * Often you don't need to generate or register all seven resourceful routes,
- * so you can pass an array as third item:
+ * Incase having more than one middleware, reference an array:
  * 
- * ['only' => ['index', 'show', 'create', 'store']]
- * ['except' => ['edit']]
+ * Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'can:edit-job,job']);
+ * 
+ * In order to access it, first it needs to be signed in,
+ * and second it needs to have a permission to edit the job.
  */
-Route::resource('jobs', JobController::class)->only(['index', 'show']);
-Route::resource('jobs', JobController::class)->except(['index', 'show'])->middleware('auth');
 
-Route::view('/contact', 'contact');
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
+    ->middleware('auth')
+    ->can('edit-job', 'job');
+
+Route::patch('/jobs/{job}', [JobController::class, 'update'])
+    ->middleware('auth')
+    ->can('edit-job', 'job');
+
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
+    ->middleware('auth')
+    ->can('edit-job', 'job');
 
 // Auth
 Route::get('/register', [RegisteredUserController::class, 'create']);

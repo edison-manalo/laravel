@@ -57,7 +57,7 @@ class JobController extends Controller
          * if (Gate::allows(...)) {...}
          * if (Gate::denies(...)) {...}
          */
-        Gate::authorize('edit-job', $job);
+        // Gate::authorize('edit-job', $job);
 
         return view('jobs.edit', [
             'job' => $job
@@ -66,7 +66,7 @@ class JobController extends Controller
 
     public function update(Job $job)
     {
-        Gate::authorize('edit-job', $job);
+        // Gate::authorize('edit-job', $job);
 
         // Validate
         request()->validate([
@@ -85,7 +85,7 @@ class JobController extends Controller
 
     public function destroy(Job $job)
     {
-        Gate::authorize('edit-job', $job);
+        // Gate::authorize('edit-job', $job);
 
         // Delete
         $job->delete();
