@@ -49,15 +49,6 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
-        // See if the user is the same as the user who is currently signed in
-        Gate::define('edit-job', function (User $user, Job $job) {
-            return $job->employer->user->is($user);
-        });
-
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
-
         /** 
          * Runs the logic (Gate::define(...)) associated with the name referenced "edit-job",
          * if it fails or return false, laravel automatically aborts with a 403.
