@@ -42,8 +42,8 @@ class AppServiceProvider extends ServiceProvider
          * (User $user = null, ...) = Setting the user to null
          * (? User $user, ...)      = Make the type optional
          */
-        Gate::define('edit-job', function (User $user, Job $job) {
-            return $job->employer->user->is($user);
-        });
+        // Gate::define('edit-job', function (User $user, Job $job) {
+        //     return $job->employer->user->is($user);
+        // });
     }
 }
