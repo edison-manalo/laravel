@@ -26,7 +26,8 @@ Route::controller(JobController::class)->group(function () {
  * ['only' => ['index', 'show', 'create', 'store']]
  * ['except' => ['edit']]
  */
-Route::resource('jobs', JobController::class);
+Route::resource('jobs', JobController::class)->only(['index', 'show']);
+Route::resource('jobs', JobController::class)->except(['index', 'show'])->middleware('auth');
 
 Route::view('/contact', 'contact');
 
@@ -34,7 +35,7 @@ Route::view('/contact', 'contact');
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
-Route::get('/login', [SessionController::class, 'create']);
+Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 
 Route::post('/logout', [SessionController::class, 'destroy']);
