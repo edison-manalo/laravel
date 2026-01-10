@@ -49,6 +49,13 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
+        /**
+         * The User model that ships with laravel,
+         * includes access to "can" and "cannot" method.
+         * They are unique and specifically for authorization.
+         */
+        // if (Auth::user()->can('edit-job', $job)) { ... }
+
         /** 
          * Runs the logic (Gate::define(...)) associated with the name referenced "edit-job",
          * if it fails or return false, laravel automatically aborts with a 403.
@@ -57,7 +64,7 @@ class JobController extends Controller
          * if (Gate::allows(...)) {...}
          * if (Gate::denies(...)) {...}
          */
-        Gate::authorize('edit-job', $job);
+        // Gate::authorize('edit-job', $job);
 
         return view('jobs.edit', [
             'job' => $job
