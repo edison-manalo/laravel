@@ -48,7 +48,7 @@ class JobController extends Controller
         ]);
 
         // An email will be grab automatically just by feeding the User instance
-        Mail::to($job->employer->user)->send(
+        Mail::to($job->employer->user)->queue(
             new JobPosted($job)
         );
 
