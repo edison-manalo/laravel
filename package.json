@@ -7,7 +7,7 @@
         "dev": "vite"
     },
     "devDependencies": {
-        "@tailwindcss/vite": "^4.0.0",
+        "@tailwindcss/vite": "^4.1.18",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^2.0.0",
@@ -21,6 +21,7 @@
         "test": "tests"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^7.1.0",
         "ansi-regex": "^5.0.1",
         "ansi-styles": "^4.3.0",
         "asynckit": "^0.4.0",
@@ -81,6 +82,7 @@
         "string-width": "^4.2.3",
         "strip-ansi": "^6.0.1",
         "supports-color": "^8.1.1",
+        "tailwindcss": "^4.1.18",
         "tapable": "^2.3.0",
         "tinyglobby": "^0.2.15",
         "tree-kill": "^1.2.2",
